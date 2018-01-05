@@ -1,0 +1,81 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+	<changeSet id="db-changelog-1.0.xml" author="patricia.espada">
+		<sql><![CDATA[
+			CREATE TABLE `test_exam` (
+				`id` INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+				`name` VARCHAR(100) NOT NULL,
+				`description` VARCHAR(1000) NOT NULL,
+				`pass_score` INT(11) NOT NULL,
+				`total_score` INT(11) NOT NULL,
+				`exam_duration` INT(11) NOT NULL
+			);
+			
+			CREATE TABLE `question` (
+				`id` INT(11) NOT NULL AUTO_INCREMENT,
+				`title` VARCHAR(100) NOT NULL,
+				`problem_description` VARCHAR(1000) NOT NULL,
+				`have_more_than_one_answer` BIT(1) NOT NULL,
+				`order` INT(11) NOT NULL,
+				PRIMARY KEY (`id`)
+			);
+			
+			CREATE TABLE `question_test_exam` (
+				`question_id` INT(11) NOT NULL,
+				`test_exam_id` INT(11) NOT NULL,
+				PRIMARY KEY (`question_id`, `test_exam_id`),
+				KEY `FK_question_test_exam_question_id_idx` (`question_id`),
+				KEY `FK_question_test_exam_test_exam_id_idx` (`test_exam_id`),
+				CONSTRAINT `FK_question_test_exam_question_id` FOREIGN KEY (`question_id`) REFERENCES `question` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+				CONSTRAINT `FK_question_test_exam_test_exam_id` FOREIGN KEY (`test_exam_id`) REFERENCES `test_exam` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+			);
+			
+			CREATE TABLE `question_choice_answer` (
+				`id` INT(11) NOT NULL AUTO_INCREMENT,
+				`question_id` INT(11) NOT NULL,
+				`text` VARCHAR(500) NOT NULL,
+				`display_order` VARCHAR(500) NOT NULL,
+				`is_correct` BIT(1) NOT NULL,
+				PRIMARY KEY (`id`),
+				KEY `FK_question_choice_answer_question_id_idx` (`question_id`),
+				CONSTRAINT `FK_question_choice_answer_question_id` FOREIGN KEY (`question_id`) REFERENCES `question` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+			);
+			
+			CREATE TABLE `user` (
+				`id` INT(11) NOT NULL AUTO_INCREMENT,
+				`full_name` VARCHAR(200) NOT NULL,
+				`username` VARCHAR(50) NOT NULL,
+				`password` VARCHAR(50) NOT NULL,
+				PRIMARY KEY (`id`),
+				UNIQUE KEY `UIX_username` (`username`)
+			);
+			
+			CREATE TABLE `test_exam_user` (
+				`test_exam_id` INT(11) NOT NULL,
+				`user_id` INT(11) NOT NULL,
+				`has_finish` BIT(1) NOT NULL,
+				PRIMARY KEY (`test_exam_id`, `user_id`),
+				KEY `FK_test_exam_user_test_exam_id_idx` (`test_exam_id`),
+				KEY `FK_test_exam_user_user_id_idx` (`user_id`),
+				CONSTRAINT `FK_test_exam_user_test_exam_id` FOREIGN KEY (`test_exam_id`) REFERENCES `test_exam` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+				CONSTRAINT `FK_test_exam_user_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+			);
+			
+			CREATE TABLE `question_choice_answer_user` (
+				`question_choice_answer_id` INT(11) NOT NULL,
+				`user_id` INT(11) NOT NULL,
+				PRIMARY KEY (`question_choice_answer_id`, `user_id`),
+				KEY `FK_question_choice_answer_user_question_choice_answer_id_idx` (`question_choice_answer_id`),
+				KEY `FK_question_choice_answer_user_user_id_idx` (`user_id`),
+				CONSTRAINT `FK_question_choice_answer_user_question_choice_answer_id` FOREIGN KEY (`question_choice_answer_id`) REFERENCES `question_choice_answer` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+				CONSTRAINT `FK_question_choice_answer_user_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+			);
+			
+		]]></sql>
+		<rollback></rollback>
+	</changeSet>
+
+</databaseChangeLog>
