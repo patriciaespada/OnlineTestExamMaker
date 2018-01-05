@@ -1,5 +1,5 @@
 package com.titiespada.onlinetestexammaker.model;
-// Generated 5/jan/2018 14:15:23 by Hibernate Tools 5.2.6.Final
+// Generated 5/jan/2018 22:51:25 by Hibernate Tools 5.2.6.Final
 
 import java.util.HashSet;
 import java.util.Set;
@@ -7,9 +7,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -26,7 +23,7 @@ public class TestExam implements java.io.Serializable {
 	private int passScore;
 	private int totalScore;
 	private int examDuration;
-	private Set<Question> questions = new HashSet<Question>(0);
+	private Set<QuestionTestExam> questionTestExams = new HashSet<QuestionTestExam>(0);
 	private Set<TestExamUser> testExamUsers = new HashSet<TestExamUser>(0);
 
 	public TestExam() {
@@ -42,14 +39,14 @@ public class TestExam implements java.io.Serializable {
 	}
 
 	public TestExam(int id, String name, String description, int passScore, int totalScore, int examDuration,
-			Set<Question> questions, Set<TestExamUser> testExamUsers) {
+			Set<QuestionTestExam> questionTestExams, Set<TestExamUser> testExamUsers) {
 		this.id = id;
 		this.name = name;
 		this.description = description;
 		this.passScore = passScore;
 		this.totalScore = totalScore;
 		this.examDuration = examDuration;
-		this.questions = questions;
+		this.questionTestExams = questionTestExams;
 		this.testExamUsers = testExamUsers;
 	}
 
@@ -109,16 +106,13 @@ public class TestExam implements java.io.Serializable {
 		this.examDuration = examDuration;
 	}
 
-	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(name = "question_test_exam", joinColumns = {
-			@JoinColumn(name = "test_exam_id", nullable = false, updatable = false) }, inverseJoinColumns = {
-					@JoinColumn(name = "question_id", nullable = false, updatable = false) })
-	public Set<Question> getQuestions() {
-		return this.questions;
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "testExam")
+	public Set<QuestionTestExam> getQuestionTestExams() {
+		return this.questionTestExams;
 	}
 
-	public void setQuestions(Set<Question> questions) {
-		this.questions = questions;
+	public void setQuestionTestExams(Set<QuestionTestExam> questionTestExams) {
+		this.questionTestExams = questionTestExams;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "testExam")

@@ -1,5 +1,5 @@
 package com.titiespada.onlinetestexammaker.model;
-// Generated 5/jan/2018 14:15:23 by Hibernate Tools 5.2.6.Final
+// Generated 5/jan/2018 22:51:25 by Hibernate Tools 5.2.6.Final
 
 import java.util.HashSet;
 import java.util.Set;
@@ -7,9 +7,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -24,30 +21,27 @@ public class Question implements java.io.Serializable {
 	private String title;
 	private String problemDescription;
 	private boolean haveMoreThanOneAnswer;
-	private int order;
 	private Set<QuestionChoiceAnswer> questionChoiceAnswers = new HashSet<QuestionChoiceAnswer>(0);
-	private Set<TestExam> testExams = new HashSet<TestExam>(0);
+	private Set<QuestionTestExam> questionTestExams = new HashSet<QuestionTestExam>(0);
 
 	public Question() {
 	}
 
-	public Question(int id, String title, String problemDescription, boolean haveMoreThanOneAnswer, int order) {
+	public Question(int id, String title, String problemDescription, boolean haveMoreThanOneAnswer) {
 		this.id = id;
 		this.title = title;
 		this.problemDescription = problemDescription;
 		this.haveMoreThanOneAnswer = haveMoreThanOneAnswer;
-		this.order = order;
 	}
 
-	public Question(int id, String title, String problemDescription, boolean haveMoreThanOneAnswer, int order,
-			Set<QuestionChoiceAnswer> questionChoiceAnswers, Set<TestExam> testExams) {
+	public Question(int id, String title, String problemDescription, boolean haveMoreThanOneAnswer,
+			Set<QuestionChoiceAnswer> questionChoiceAnswers, Set<QuestionTestExam> questionTestExams) {
 		this.id = id;
 		this.title = title;
 		this.problemDescription = problemDescription;
 		this.haveMoreThanOneAnswer = haveMoreThanOneAnswer;
-		this.order = order;
 		this.questionChoiceAnswers = questionChoiceAnswers;
-		this.testExams = testExams;
+		this.questionTestExams = questionTestExams;
 	}
 
 	@Id
@@ -88,16 +82,7 @@ public class Question implements java.io.Serializable {
 		this.haveMoreThanOneAnswer = haveMoreThanOneAnswer;
 	}
 
-	@Column(name = "order", nullable = false)
-	public int getOrder() {
-		return this.order;
-	}
-
-	public void setOrder(int order) {
-		this.order = order;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "question")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "question")
 	public Set<QuestionChoiceAnswer> getQuestionChoiceAnswers() {
 		return this.questionChoiceAnswers;
 	}
@@ -106,16 +91,13 @@ public class Question implements java.io.Serializable {
 		this.questionChoiceAnswers = questionChoiceAnswers;
 	}
 
-	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(name = "question_test_exam", joinColumns = {
-			@JoinColumn(name = "question_id", nullable = false, updatable = false) }, inverseJoinColumns = {
-					@JoinColumn(name = "test_exam_id", nullable = false, updatable = false) })
-	public Set<TestExam> getTestExams() {
-		return this.testExams;
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "question")
+	public Set<QuestionTestExam> getQuestionTestExams() {
+		return this.questionTestExams;
 	}
 
-	public void setTestExams(Set<TestExam> testExams) {
-		this.testExams = testExams;
+	public void setQuestionTestExams(Set<QuestionTestExam> questionTestExams) {
+		this.questionTestExams = questionTestExams;
 	}
 
 }
