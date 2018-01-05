@@ -11,17 +11,15 @@ import com.titiespada.onlinetestexammaker.repository.TestExamRepository;
 @Service("testExamService")
 public class TestExamServiceImpl implements TestExamService {
 
-//	@Autowired
-//	private TestExamRepository testExamRepository;
+	@Autowired
+	private TestExamRepository testExamRepository;
 	
 	public TestExam findById(Integer id) {
-//		return testExamRepository.findOne(id);
-		return null;
+		return testExamRepository.findOne(id);
 	}
 
 	public List<TestExam> findAll() {
-//		return (List<TestExam>) testExamRepository.findAll();
-		return null;
+		return (List<TestExam>) testExamRepository.findAll();
 	}
 
 }

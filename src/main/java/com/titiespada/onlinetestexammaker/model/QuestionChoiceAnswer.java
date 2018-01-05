@@ -1,7 +1,5 @@
 package com.titiespada.onlinetestexammaker.model;
-
-// default package
-// Generated 4/jan/2018 17:26:31 by Hibernate Tools 5.2.6.Final
+// Generated 5/jan/2018 14:15:23 by Hibernate Tools 5.2.6.Final
 
 import java.util.HashSet;
 import java.util.Set;
@@ -27,7 +25,7 @@ public class QuestionChoiceAnswer implements java.io.Serializable {
 	private String text;
 	private String displayOrder;
 	private boolean isCorrect;
-	private Set users = new HashSet(0);
+	private Set<User> users = new HashSet<User>(0);
 
 	public QuestionChoiceAnswer() {
 	}
@@ -41,7 +39,7 @@ public class QuestionChoiceAnswer implements java.io.Serializable {
 	}
 
 	public QuestionChoiceAnswer(int id, Question question, String text, String displayOrder, boolean isCorrect,
-			Set users) {
+			Set<User> users) {
 		this.id = id;
 		this.question = question;
 		this.text = text;
@@ -102,11 +100,11 @@ public class QuestionChoiceAnswer implements java.io.Serializable {
 	@JoinTable(name = "question_choice_answer_user", joinColumns = {
 			@JoinColumn(name = "question_choice_answer_id", nullable = false, updatable = false) }, inverseJoinColumns = {
 					@JoinColumn(name = "user_id", nullable = false, updatable = false) })
-	public Set getUsers() {
+	public Set<User> getUsers() {
 		return this.users;
 	}
 
-	public void setUsers(Set users) {
+	public void setUsers(Set<User> users) {
 		this.users = users;
 	}
 

@@ -1,7 +1,5 @@
 package com.titiespada.onlinetestexammaker.model;
-
-// default package
-// Generated 4/jan/2018 17:26:31 by Hibernate Tools 5.2.6.Final
+// Generated 5/jan/2018 14:15:23 by Hibernate Tools 5.2.6.Final
 
 import java.util.HashSet;
 import java.util.Set;
@@ -27,8 +25,8 @@ public class Question implements java.io.Serializable {
 	private String problemDescription;
 	private boolean haveMoreThanOneAnswer;
 	private int order;
-	private Set questionChoiceAnswers = new HashSet(0);
-	private Set testExams = new HashSet(0);
+	private Set<QuestionChoiceAnswer> questionChoiceAnswers = new HashSet<QuestionChoiceAnswer>(0);
+	private Set<TestExam> testExams = new HashSet<TestExam>(0);
 
 	public Question() {
 	}
@@ -42,7 +40,7 @@ public class Question implements java.io.Serializable {
 	}
 
 	public Question(int id, String title, String problemDescription, boolean haveMoreThanOneAnswer, int order,
-			Set questionChoiceAnswers, Set testExams) {
+			Set<QuestionChoiceAnswer> questionChoiceAnswers, Set<TestExam> testExams) {
 		this.id = id;
 		this.title = title;
 		this.problemDescription = problemDescription;
@@ -100,11 +98,11 @@ public class Question implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "question")
-	public Set getQuestionChoiceAnswers() {
+	public Set<QuestionChoiceAnswer> getQuestionChoiceAnswers() {
 		return this.questionChoiceAnswers;
 	}
 
-	public void setQuestionChoiceAnswers(Set questionChoiceAnswers) {
+	public void setQuestionChoiceAnswers(Set<QuestionChoiceAnswer> questionChoiceAnswers) {
 		this.questionChoiceAnswers = questionChoiceAnswers;
 	}
 
@@ -112,11 +110,11 @@ public class Question implements java.io.Serializable {
 	@JoinTable(name = "question_test_exam", joinColumns = {
 			@JoinColumn(name = "question_id", nullable = false, updatable = false) }, inverseJoinColumns = {
 					@JoinColumn(name = "test_exam_id", nullable = false, updatable = false) })
-	public Set getTestExams() {
+	public Set<TestExam> getTestExams() {
 		return this.testExams;
 	}
 
-	public void setTestExams(Set testExams) {
+	public void setTestExams(Set<TestExam> testExams) {
 		this.testExams = testExams;
 	}
 

@@ -1,0 +1,72 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+	<changeSet id="db-changelog-1.2.xml" author="patricia.espada">
+		<sql><![CDATA[
+			LOCK TABLES `test_exam` WRITE;
+			INSERT INTO `test_exam` VALUES 
+				(1, 'Java SE 7 Programmer I', 'Test your knowledge of key Java concepts.', 50, 100, 1200),
+				(2, 'Java SE 7 Programmer II', 'Test your knowledge of key Java concepts.', 50, 100, 1200),
+				(3, 'Java SE 8 Programmer I', 'Test your knowledge of key Java concepts.', 50, 100, 1200);
+			UNLOCK TABLES;
+			
+			LOCK TABLES `question` WRITE;
+			INSERT INTO `question` VALUES 
+				(1, 'Analyse the following code.', 'public class Calculator {\n int num = 100;\n public void calc(int num) {\n this.num = num * 10;\n }\n public void printNum(){\n System.out.println(num);\n }\n public static void main(String[] args) {\n Calculator obj = new Calculator ();\n obj.calc(2);\n obj.printNum();\n }\n}', 0),
+				(2, 'Analyse the following code.', 'public class MyStuff {\n String name;\n MyStuff(String n) {\n name = n;\n }\n public static void main(String[] args) {\n MyStuff m1 = new MyStuff("guitar");\n MyStuff m2 = new MyStuff("tv");\n System.out.println(m2.equals(m1));\n }\n public boolean equals(Object o) {\n MyStuff m = (MyStuff) o;\n if (m.name != null) {\n return true;\n }\n return false;\n }\n}', 0),
+				(3, 'Analyse the following code.', 'import java.util.*;\npublic class App {\n public static void main(String[] args) {\n List p = new ArrayList();\n p.add(7);\n p.add(1);\n p.add(5);\n p.add(1);\n p.remove(1);\n System.out.println(p);\n }\n}', 0),
+				(4, 'Analyse the following code.', 'public class MyLoop {\n public static void main(String[] args) {\n String[] sa = {"tom ", "jerry "};\n for (int x = 0; x < 3; x++) {\n for (String s : sa) {\n System.out.print(x + " " + s);\n if (x == 1) {\n break;\n }\n }\n }\n }\n}', 0),
+				(5, 'Analyse the following code.', 'interface Rideable { String getGait(); }\npublic class Camel implements Rideable {\n int weight = 2;\n String getGait() { return " mph, lope"; }\n void go(int speed) {\n ++speed; weight++;\n int walkrate = speed * weight;\n System.out.print(walkrate + getGait());\n }\n public static void main(String[] args) {\n new Camel().go(8);\n }\n}', 0),
+				(6, 'Analyse the following code.', 'class Alpha {\n String getType() {\n return "alpha";\n }\n}\nclass Beta extends Alpha {\n String getType() {\n return "beta";\n }\n}\npublic class Gamma extends Beta {\n String getType() {\n return "gamma";\n }\n public static void main(String[] args) {\n Gamma g1 = new Alpha();\n Gamma g2 = new Beta();\n System.out.println(g1.getType() + " "\n + g2.getType());\n }\n}', 0),
+				(7, 'Analyse the following code.', 'class Feline {\n public String type = "f ";\n public Feline() {\n System.out.print("feline ");\n }\n}\npublic class Cougar extends Feline {\n public Cougar() {\n System.out.print("cougar ");\n }\n void go() {\n type = "c ";\n System.out.print(this.type + super.type);\n }\n public static void main(String[] args) {\n new Cougar().go();\n }\n}', 0);
+			UNLOCK TABLES;
+			
+			LOCK TABLES `question_test_exam` WRITE;
+			INSERT INTO `question_test_exam` VALUES
+				(1, 1, 1),
+				(2, 1, 2),
+				(3, 1, 3),
+				(4, 1, 4),
+				(5, 1, 5),
+				(6, 1, 6),
+				(7, 1, 7);
+			UNLOCK TABLES;
+			
+			LOCK TABLES `question_choice_answer` WRITE;
+			INSERT INTO `question_choice_answer` VALUES
+				(1, 1, '20', 1, 1),
+				(2, 1, '100', 2, 0),
+				(3, 1, '1000', 3, 0),
+				(4, 1, '2', 4, 0),
+				(5, 2, 'The output is true and MyStuff fulfills the Object.equals() contract.', 1, 0),
+				(6, 2, 'The output is false and MyStuff fulfills the Object.equals() contract.', 2, 0),
+				(7, 2, 'The output is true and MyStuff does NOT fulfill the Object.equals() contract', 3, 1),
+				(8, 2, 'The output is false and MyStuff does NOT fulfill the Object.equals() contract.', 4, 0),
+				(9, 3, '[7, 1, 5, 1]', 1, 0),
+				(10, 3, '[7, 5, 1]', 2, 1),
+				(11, 3, '[7, 5]', 3, 0),
+				(12, 3, '[7, 1]', 4, 0),
+				(13, 4, '0 tom 0 jerry 1 tom 1 jerry', 1, 0),
+				(14, 4, '0 tom 0 jerry 2 tom 2 jerry', 2, 0),
+				(15, 4, '0 tom 0 jerry 1 tom 2 tom 2 jerry', 3, 1),
+				(16, 4, '0 tom 0 jerry 1 tom 1 jerry 2 tom 2 jerry', 4, 0),
+				(17, 5, '16 mph, lope', 1, 0),
+				(18, 5, '24 mph, lope', 2, 0),
+				(19, 5, '27 mph, lope', 3, 0),
+				(20, 5, 'Compilation fails.', 4, 1),
+				(21, 6, 'alpha beta', 1, 0),
+				(22, 6, 'beta beta', 2, 0),
+				(23, 6, 'gamma gamma', 3, 0),
+				(24, 6, 'Compilation fails.', 4, 1),
+				(25, 7, 'cougar c f', 1, 0),
+				(26, 7, 'feline cougar c c', 2, 1),
+				(27, 7, 'feline cougar c f', 3, 0),
+				(28, 7, 'Compilation fails.', 4, 0);
+			UNLOCK TABLES; 
+		]]></sql>
+		<rollback></rollback>
+	</changeSet>
+
+</databaseChangeLog>

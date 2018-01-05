@@ -1,7 +1,5 @@
 package com.titiespada.onlinetestexammaker.model;
-
-// default package
-// Generated 4/jan/2018 17:26:31 by Hibernate Tools 5.2.6.Final
+// Generated 5/jan/2018 14:15:23 by Hibernate Tools 5.2.6.Final
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;

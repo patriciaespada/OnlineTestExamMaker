@@ -1,7 +1,5 @@
 package com.titiespada.onlinetestexammaker.model;
-
-// default package
-// Generated 4/jan/2018 17:26:31 by Hibernate Tools 5.2.6.Final
+// Generated 5/jan/2018 14:15:23 by Hibernate Tools 5.2.6.Final
 
 import java.util.HashSet;
 import java.util.Set;
@@ -28,8 +26,8 @@ public class TestExam implements java.io.Serializable {
 	private int passScore;
 	private int totalScore;
 	private int examDuration;
-	private Set questions = new HashSet(0);
-	private Set testExamUsers = new HashSet(0);
+	private Set<Question> questions = new HashSet<Question>(0);
+	private Set<TestExamUser> testExamUsers = new HashSet<TestExamUser>(0);
 
 	public TestExam() {
 	}
@@ -44,7 +42,7 @@ public class TestExam implements java.io.Serializable {
 	}
 
 	public TestExam(int id, String name, String description, int passScore, int totalScore, int examDuration,
-			Set questions, Set testExamUsers) {
+			Set<Question> questions, Set<TestExamUser> testExamUsers) {
 		this.id = id;
 		this.name = name;
 		this.description = description;
@@ -115,20 +113,20 @@ public class TestExam implements java.io.Serializable {
 	@JoinTable(name = "question_test_exam", joinColumns = {
 			@JoinColumn(name = "test_exam_id", nullable = false, updatable = false) }, inverseJoinColumns = {
 					@JoinColumn(name = "question_id", nullable = false, updatable = false) })
-	public Set getQuestions() {
+	public Set<Question> getQuestions() {
 		return this.questions;
 	}
 
-	public void setQuestions(Set questions) {
+	public void setQuestions(Set<Question> questions) {
 		this.questions = questions;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "testExam")
-	public Set getTestExamUsers() {
+	public Set<TestExamUser> getTestExamUsers() {
 		return this.testExamUsers;
 	}
 
-	public void setTestExamUsers(Set testExamUsers) {
+	public void setTestExamUsers(Set<TestExamUser> testExamUsers) {
 		this.testExamUsers = testExamUsers;
 	}
 

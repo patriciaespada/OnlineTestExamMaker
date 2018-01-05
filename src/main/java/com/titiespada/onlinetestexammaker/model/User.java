@@ -1,7 +1,5 @@
 package com.titiespada.onlinetestexammaker.model;
-
-// default package
-// Generated 4/jan/2018 17:26:31 by Hibernate Tools 5.2.6.Final
+// Generated 5/jan/2018 14:15:23 by Hibernate Tools 5.2.6.Final
 
 import java.util.HashSet;
 import java.util.Set;
@@ -27,8 +25,8 @@ public class User implements java.io.Serializable {
 	private String fullName;
 	private String username;
 	private String password;
-	private Set testExamUsers = new HashSet(0);
-	private Set questionChoiceAnswers = new HashSet(0);
+	private Set<TestExamUser> testExamUsers = new HashSet<TestExamUser>(0);
+	private Set<QuestionChoiceAnswer> questionChoiceAnswers = new HashSet<QuestionChoiceAnswer>(0);
 
 	public User() {
 	}
@@ -40,8 +38,8 @@ public class User implements java.io.Serializable {
 		this.password = password;
 	}
 
-	public User(int id, String fullName, String username, String password, Set testExamUsers,
-			Set questionChoiceAnswers) {
+	public User(int id, String fullName, String username, String password, Set<TestExamUser> testExamUsers,
+			Set<QuestionChoiceAnswer> questionChoiceAnswers) {
 		this.id = id;
 		this.fullName = fullName;
 		this.username = username;
@@ -89,11 +87,11 @@ public class User implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
-	public Set getTestExamUsers() {
+	public Set<TestExamUser> getTestExamUsers() {
 		return this.testExamUsers;
 	}
 
-	public void setTestExamUsers(Set testExamUsers) {
+	public void setTestExamUsers(Set<TestExamUser> testExamUsers) {
 		this.testExamUsers = testExamUsers;
 	}
 
@@ -101,11 +99,11 @@ public class User implements java.io.Serializable {
 	@JoinTable(name = "question_choice_answer_user", joinColumns = {
 			@JoinColumn(name = "user_id", nullable = false, updatable = false) }, inverseJoinColumns = {
 					@JoinColumn(name = "question_choice_answer_id", nullable = false, updatable = false) })
-	public Set getQuestionChoiceAnswers() {
+	public Set<QuestionChoiceAnswer> getQuestionChoiceAnswers() {
 		return this.questionChoiceAnswers;
 	}
 
-	public void setQuestionChoiceAnswers(Set questionChoiceAnswers) {
+	public void setQuestionChoiceAnswers(Set<QuestionChoiceAnswer> questionChoiceAnswers) {
 		this.questionChoiceAnswers = questionChoiceAnswers;
 	}
 
