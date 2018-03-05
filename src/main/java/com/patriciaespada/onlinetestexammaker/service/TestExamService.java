@@ -1,8 +1,8 @@
-package com.titiespada.onlinetestexammaker.service;
+package com.patriciaespada.onlinetestexammaker.service;
 
 import java.util.List;
 
-import com.titiespada.onlinetestexammaker.model.TestExam;
+import com.patriciaespada.onlinetestexammaker.model.TestExam;
 
 public interface TestExamService {
 

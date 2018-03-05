@@ -1,10 +1,10 @@
-package com.titiespada.onlinetestexammaker.dto;
+package com.patriciaespada.onlinetestexammaker.dto;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.titiespada.onlinetestexammaker.model.Question;
+import com.patriciaespada.onlinetestexammaker.model.Question;
 
 public class QuestionDto implements Serializable {
 	

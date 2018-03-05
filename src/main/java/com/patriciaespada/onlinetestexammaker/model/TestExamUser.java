@@ -1,4 +1,4 @@
-package com.titiespada.onlinetestexammaker.model;
+package com.patriciaespada.onlinetestexammaker.model;
 // Generated 5/jan/2018 14:15:23 by Hibernate Tools 5.2.6.Final
 
 import javax.persistence.AttributeOverride;

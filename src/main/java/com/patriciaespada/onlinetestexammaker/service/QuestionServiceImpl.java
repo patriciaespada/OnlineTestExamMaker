@@ -1,12 +1,12 @@
-package com.titiespada.onlinetestexammaker.service;
+package com.patriciaespada.onlinetestexammaker.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.titiespada.onlinetestexammaker.model.Question;
-import com.titiespada.onlinetestexammaker.repository.QuestionRepository;
+import com.patriciaespada.onlinetestexammaker.model.Question;
+import com.patriciaespada.onlinetestexammaker.repository.QuestionRepository;
 
 @Service("questionService")
 public class QuestionServiceImpl implements QuestionService {

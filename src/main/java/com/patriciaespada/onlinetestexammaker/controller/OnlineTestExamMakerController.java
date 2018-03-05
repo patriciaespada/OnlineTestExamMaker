@@ -1,4 +1,4 @@
-package com.titiespada.onlinetestexammaker.controller;
+package com.patriciaespada.onlinetestexammaker.controller;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,15 +15,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.titiespada.onlinetestexammaker.dto.QuestionChoiceAnswerDto;
-import com.titiespada.onlinetestexammaker.dto.QuestionDto;
-import com.titiespada.onlinetestexammaker.dto.TestExamDto;
-import com.titiespada.onlinetestexammaker.model.Question;
-import com.titiespada.onlinetestexammaker.model.QuestionChoiceAnswer;
-import com.titiespada.onlinetestexammaker.model.QuestionTestExam;
-import com.titiespada.onlinetestexammaker.model.TestExam;
-import com.titiespada.onlinetestexammaker.service.QuestionService;
-import com.titiespada.onlinetestexammaker.service.TestExamService;
+import com.patriciaespada.onlinetestexammaker.dto.QuestionChoiceAnswerDto;
+import com.patriciaespada.onlinetestexammaker.dto.QuestionDto;
+import com.patriciaespada.onlinetestexammaker.dto.TestExamDto;
+import com.patriciaespada.onlinetestexammaker.model.Question;
+import com.patriciaespada.onlinetestexammaker.model.QuestionChoiceAnswer;
+import com.patriciaespada.onlinetestexammaker.model.QuestionTestExam;
+import com.patriciaespada.onlinetestexammaker.model.TestExam;
+import com.patriciaespada.onlinetestexammaker.service.QuestionService;
+import com.patriciaespada.onlinetestexammaker.service.TestExamService;
 
 @RestController
 public class OnlineTestExamMakerController {

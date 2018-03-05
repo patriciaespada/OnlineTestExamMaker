@@ -1,4 +1,4 @@
-package com.titiespada.onlinetestexammaker.repository;
+package com.patriciaespada.onlinetestexammaker.repository;
 
 import java.util.List;
 
@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
-import com.titiespada.onlinetestexammaker.model.Question;
+import com.patriciaespada.onlinetestexammaker.model.Question;
 
 public interface QuestionRepository extends CrudRepository<Question, Integer> {
 

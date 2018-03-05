@@ -1,8 +1,8 @@
-package com.titiespada.onlinetestexammaker.dto;
+package com.patriciaespada.onlinetestexammaker.dto;
 
 import java.io.Serializable;
 
-import com.titiespada.onlinetestexammaker.model.TestExam;
+import com.patriciaespada.onlinetestexammaker.model.TestExam;
 
 public class TestExamDto implements Serializable {
 

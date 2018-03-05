@@ -1,4 +1,4 @@
-package com.titiespada.onlinetestexammaker.configuration;
+package com.patriciaespada.onlinetestexammaker.configuration;
 
 import java.util.Properties;
 
@@ -24,8 +24,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration 
 @EnableTransactionManagement
-@ComponentScan({ "com.titiespada.onlinetestexammaker.configuration" })
-@EnableJpaRepositories("com.titiespada.onlinetestexammaker.repository")
+@ComponentScan({ "com.patriciaespada.onlinetestexammaker.configuration" })
+@EnableJpaRepositories("com.patriciaespada.onlinetestexammaker.repository")
 @PropertySource("classpath:application.properties")
 public class HibernateConfiguration {
 	
@@ -58,7 +58,7 @@ public class HibernateConfiguration {
  
         LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
         factory.setJpaVendorAdapter(vendorAdapter);
-        factory.setPackagesToScan("com.titiespada.onlinetestexammaker.model");
+        factory.setPackagesToScan("com.patriciaespada.onlinetestexammaker.model");
         factory.setDataSource(dataSource);
  
         Properties properties = new Properties();

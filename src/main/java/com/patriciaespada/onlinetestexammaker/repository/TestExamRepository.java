@@ -1,8 +1,8 @@
-package com.titiespada.onlinetestexammaker.repository;
+package com.patriciaespada.onlinetestexammaker.repository;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.titiespada.onlinetestexammaker.model.TestExam;
+import com.patriciaespada.onlinetestexammaker.model.TestExam;
 
 public interface TestExamRepository extends CrudRepository<TestExam, Integer> {
 

@@ -1,4 +1,4 @@
-package com.titiespada.onlinetestexammaker.configuration;
+package com.patriciaespada.onlinetestexammaker.configuration;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 

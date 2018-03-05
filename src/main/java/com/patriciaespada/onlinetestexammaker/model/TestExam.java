@@ -1,4 +1,4 @@
-package com.titiespada.onlinetestexammaker.model;
+package com.patriciaespada.onlinetestexammaker.model;
 // Generated 5/jan/2018 22:51:25 by Hibernate Tools 5.2.6.Final
 
 import java.util.HashSet;

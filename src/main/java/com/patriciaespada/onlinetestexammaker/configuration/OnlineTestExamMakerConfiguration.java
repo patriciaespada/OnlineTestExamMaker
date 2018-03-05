@@ -1,4 +1,4 @@
-package com.titiespada.onlinetestexammaker.configuration;
+package com.patriciaespada.onlinetestexammaker.configuration;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -6,7 +6,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = "com.titiespada.onlinetestexammaker")
+@ComponentScan(basePackages = "com.patriciaespada.onlinetestexammaker")
 public class OnlineTestExamMakerConfiguration {
 	
 //    @Bean
